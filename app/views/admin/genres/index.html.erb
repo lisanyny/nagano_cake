@@ -9,11 +9,11 @@
           <%= f.text_field :name %>
           <%= f.submit '新規登録', class: 'btn btn-success' %>
           <% end %>
-          <table>
+          <table class="table table-hover table-inverse">
             <thead>
               <tr>
                 <th>ジャンル</th>
-              </tr>
+                <th></th>
             </thead>
             <tbody>
               <% @genres.each do |genre| %>
@@ -22,7 +22,7 @@
                   <%= genre.name %>
                 </td>
                 <td>
-                  <%= genre.submit '編集する', class: 'btn btn-success' %>
+                  <%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-success' %>
                 </td>
               </tr>
               <% end %>
