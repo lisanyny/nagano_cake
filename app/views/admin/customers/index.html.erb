@@ -1,20 +1,18 @@
-<body>
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto col-11">
-          <h5 class="genres-index">会員一覧</h5>
-          <table class="table table-hover table-inverse">
-            <thead>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11">
+      <span style="background:#DDDDDD">会員一覧</span>
+        <table class="table table-hover table-inverse">
+          <thead>
               <tr>
                 <th class="table-title">会員ID</th>
                 <th class="table-title">氏名</th>
                 <th class="table-title">メールアドレス</th>
                 <th class="table-title">ステータス</th>
               </tr>
-            </thead>
-            <tbody>
-              <% @customers.each do |customer| %>
+          </thead>
+          <tbody>
+            <% @customers.each do |customer| %>
               <tr>
                 <td>
                   <%= customer.id %>
@@ -35,11 +33,9 @@
                   <% end %>
                 </td>
               </tr>
-              <% end %>
-            </tbody>
-            <%= paginate @customers %>
-          </div>
-        </div>
+            <% end %>
+        </tbody>
+        <%= paginate @customers %>
       </div>
-    </main>
-  </body>
+    </div>
+ </div>

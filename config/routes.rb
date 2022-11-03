@@ -17,11 +17,17 @@ Rails.application.routes.draw do
 
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
     resources :orders, only:[:new, :confirm, :complete, :create, :index, :show]
-    resources :cart_items, only:[:index, :update, :destroy, :delete_all, :create]
-    resource :customers, only:[:show, :edit, :update, :confirm, :thanks]
+    resources :cart_items, only:[:index, :update, :destroy, :create]
     resources :items, only:[:index, :show]
 
-    get 'home/about', to: 'homes#about', as: 'about'
+    get '/about', to: 'homes#about', as: 'about'
+    delete 'cart_items/delete_all', to: 'cart_items#delete_all', as: 'delete_all'
+    get 'customers/my_page', to: 'customers#show', as: 'my_page'
+    get 'customers/information/edit', to: 'customers#edit', as: 'edit_information'
+    patch 'customers/information', to: 'customers#update', as: 'update_information'
+    get 'customers/confirm', to: 'customers#confirm', as: 'confirm'
+    patch 'customers/thanks', to: 'customers#thanks', as: 'thanks'
+
   end
 
   namespace :admin do

@@ -1,26 +1,33 @@
-<h2>Log in</h2>
+<div class="container">
+  <span style="background:#DDDDDD">ログイン</span>
+    <div class="row">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <%= form_with model: @customer, url:customer_session_path do |f| %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <table>
+      <thead>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td>パスワード</td>
+          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit "ログイン", class: 'btn btn-primary' %></td>
+      </tbody>
+    </table>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <% end %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+  <span style="background:#DDDDDD">会員登録がお済みでない方</span></br>
+  <%= link_to "こちら", new_customer_registration_path %>　からログインしてください。
 
-<%= render "public/shared/links" %>
+</div>

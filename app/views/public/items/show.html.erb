@@ -1,2 +1,12 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%= image_tag @item.image, width: "auto", height: "200px" %>
+    <%= @item.name %></br>
+    <%= @item.introduction %></br>
+    ¥<%= @item.add_tax_price.to_s(:delimited) %></br>
+    <%= form_with model: @item, url: item_path do |f| %>
+      <%= f.select :amount, [1,2,3], include_blank: "個数選択" %>
+    <% end %>
+  </div>
+  <%= link_to "カートに入れる", item_path, class: 'btn btn-success' %>
+</div>
