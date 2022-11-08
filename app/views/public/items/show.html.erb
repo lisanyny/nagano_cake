@@ -3,10 +3,14 @@
     <%= image_tag @item.image, width: "auto", height: "200px" %>
     <%= @item.name %></br>
     <%= @item.introduction %></br>
-    ¥<%= @item.add_tax_price.to_s(:delimited) %></br>
-    <%= form_with model: @item, url: item_path do |f| %>
-      <%= f.select :amount, [1,2,3], include_blank: "個数選択" %>
-    <% end %>
-  </div>
-  <%= link_to "カートに入れる", item_path, class: 'btn btn-success' %>
+      </div>
+    <h6>¥<%= @item.with_tax_price %></h6><span>(税抜)</span>
+
+  <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.select :amount, [1,2,3,4,5], include_blank: "個数選択" %>
+      <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+  <% end %>
+
 </div>

@@ -7,8 +7,12 @@
 <div class="row">
   <% @items.each do |item| %>
   <div class="col-3">
-    <%= image_tag item.image, width: 'auto', height: '150px' %></br>
-    <%= item.name %></br>
+    <%= link_to item_path(item.id) do %>
+      <%= image_tag item.image, width: 'auto', height: '150px' %></br>
+    <% end %>
+    <%= link_to item_path(item.id) do %>
+      <%= item.name %></br>
+    <% end %>
     ¥<%= item.price.to_s(:delimited) %></br>
   </div>
   <% end %>
