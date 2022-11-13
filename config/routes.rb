@@ -17,10 +17,11 @@ Rails.application.routes.draw do
 
     get 'orders/complete' => 'orders#complete'
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-    resources :orders, only:[:new, :create, :index, :show]
     post 'orders/confirm' => 'orders#confirm'
-    resources :cart_items, only:[:index, :update, :destroy, :create]
-    delete 'cart_items/delete_all', to: 'cart_items#delete_all', as: 'delete_all'
+    resources :orders, only:[:new, :create, :index, :show]
+    resources :cart_items, only:[:index, :update, :create]
+    delete 'cart_items/delete_all', to: 'cart_items#delete_all', as: 'delete_all_cart_item'
+    delete 'cart_items/:id', to: 'cart_items#destroy', as: 'destroy_cart_item'
     resources :items, only:[:index, :show]
 
     get '/about', to: 'homes#about', as: 'about'

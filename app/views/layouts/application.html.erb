@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -18,88 +18,94 @@
        <a class="navbar-brand p-3" href="/"><%= image_tag 'LOGO', width: 'auto', height: '50px' %></a>
         <ul class="navbar-nav ml-auto">
            <% if request.fullpath.include? "/admin" %>
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
             <%= link_to admin_items_path, class: 'btn btn-outline-dark' do %>
               商品一覧
             <% end %>
            </li>
 
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
             <%= link_to admin_customers_path, class: 'btn btn-outline-dark' do %>
               会員一覧
             <% end %>
            </li>
 
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
              <%= link_to admin_root_path, class: 'btn btn-outline-dark' do %>
              注文履歴
              <% end %>
            </li>
 
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
              <%= link_to admin_genres_path, class: 'btn btn-outline-dark' do %>
              ジャンル一覧
              <% end %>
            </li>
 
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
              <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' do %>
               ログアウト
              <% end %>
            </li>
 
            <% elsif customer_signed_in? %>
-           <span>ようこそ、<%= current_customer.last_name %>さん！</span>
+           <span style="margin:30px;">ようこそ、<%= current_customer.last_name %>さん！</span>
 
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
              <%= link_to my_page_path, class: 'btn btn-outline-dark' do %>
              マイページ
              <% end %>
            </li>
 
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
              <%= link_to items_path, class: 'btn btn-outline-dark' do %>
              商品一覧
              <% end %>
            </li>
 
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
              <%= link_to cart_items_path, class: 'btn btn-outline-dark' do %>
              カート
              <% end %>
            </li>
 
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
              <%= link_to destroy_customer_session_path, method: :delete, class: 'btn btn-outline-dark' do %>
              ログアウト
              <% end %>
            </li>
 
            <% else %>
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
              <%= link_to about_path, class: 'btn btn-outline-dark' do %>
              About
              <% end %>
            </li>
 
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
              <%= link_to items_path, class: 'btn btn-outline-dark' do %>
              商品一覧
              <% end %>
            </li>
 
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
              <%= link_to new_customer_registration_path, class: 'btn btn-outline-dark' do %>
              新規登録
              <% end %>
            </li>
 
-           <li class="nav-item">
+           <li class="nav-item" style="margin:10px;">
              <%= link_to customer_session_path, class: 'btn btn-outline-dark' do %>
              ログイン
              <% end %>
            <% end %>
         </ul>
+        <div class="col-12" style="text-align:right;">
+        <%= form_with do |f| %>
+          <%= f.text_field :keyword, placeholder: "キーワードを入力", class: "rootpageSearchForm__content" %>
+          <%= f.submit "検索", class: "rootpageSearchForm__bottum" %>
+        <% end %>
+        </div>
         </div>
       </div>
      </nav>

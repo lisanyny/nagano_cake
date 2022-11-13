@@ -3,7 +3,7 @@ class Public::ItemsController < ApplicationController
   before_action :move_to_signed_in, except: [:index]
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   def show

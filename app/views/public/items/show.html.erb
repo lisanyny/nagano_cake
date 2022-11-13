@@ -1,16 +1,20 @@
 <div class="container">
   <div class="row">
-    <%= image_tag @item.image, width: "auto", height: "200px" %>
-    <%= @item.name %></br>
+    <div class="col-4" style="margin:10px;">
+      <%= image_tag @item.image, width: "auto", height: "200px" %>
+    </div>
+    <div class="col-7" style="margin:10px;">
+    <h3><strog><%= @item.name %></strog></h3></br>
     <%= @item.introduction %></br>
-      </div>
-    <h6>¥<%= @item.with_tax_price %></h6><span>(税抜)</span>
+    <h4>¥<%= @item.with_tax_price %></h4><span>(税抜)</span>
 
-  <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-    <%= f.hidden_field :item_id, :value => @item.id %>
-    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <div style="margin:10px;">
       <%= f.select :amount, [1,2,3,4,5], include_blank: "個数選択" %>
       <%= f.submit "カートに入れる", class: 'btn btn-success' %>
-  <% end %>
-
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,10 +1,10 @@
 <div class="container">
   <span style="background:#DDDDDD">ショッピングカート</span>
-  <div style="text-align:right;">
-    <%= link_to "カートを空にする", delete_all_path, method: :delete, "data-confirm" => "カートを空にしますか？", class: 'btn btn-danger' %></br>
+  <div style="text-align:right; margin:10px;">
+    <%= link_to "カートを空にする", delete_all_cart_item_path, method: :delete, "data-confirm" => "カートを空にしますか？", class: 'btn btn-danger' %></br>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-12" style="margin:10px;">
     <table class="table table-hover table-inverse">
       <thead>
         <th>商品名</th>
@@ -19,8 +19,8 @@
           <td><%= cart_item.item.name %></td>
           <td><%= cart_item.item.with_tax_price %></td>
           <td>
-            <%= form_with model: cart_item, url: cart_items_path do |f| %>
-              <%= f.select :amount, [1,2,3,4,5] %>
+            <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+              <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
               <%= f.submit "変更", class: 'btn btn-success' %>
             <% end %>
           </td>
@@ -35,10 +35,10 @@
     <% @cart_items.each do |cart_item| %>
       <% @total += cart_item.subtotal %>
     <% end %>
-    <div class="col-9", style="text-align:left;">
+    <div class="col-7", style="text-align:left; margin:10px;">
     <%= link_to "買い物を続ける", items_path, class: 'btn btn-primary' %>
     </div>
-    <div class="col-3", style="text-align:right;">
+    <div class="col-4", style="text-align:right; margin:10px 0;">
     <table class="table table-hover table-inverse">
       <tr>
         <th>合計金額</th>
@@ -47,7 +47,7 @@
     </table>
     </div>
     </div>
-    <div style="text-align:center;">
+    <div style="text-align:center; margin:10px;">
       <%= link_to "情報入力に進む", new_order_path, class: 'btn btn-success' %>
     </div>
 

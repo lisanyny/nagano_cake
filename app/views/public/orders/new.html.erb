@@ -2,9 +2,9 @@
   <span style="background:#DDDDDD">注文情報入力</span>
   <div class="row">
     <%= form_with model: @order, url: orders_confirm_path do |f| %>
-
+    <div class="col-12" style="margin:10px;">
     <strong>支払方法</strong>
-    <div class="radio_inline">
+    <div class="radio_inline" style="margin:0 40px;">
       <div>
         <%= f.radio_button :payment_method, :credit_card %>
         <%= f.label :payment_method, "クレジットカード" %>
@@ -16,7 +16,7 @@
     </div>
 
     <strong>お届け先</strong>
-      <div class="radio_inline">
+      <div class="radio_inline" style="margin:0 40px;">
         <div>
           <%= f.radio_button :select_address, "0", checked: true %>
           <%= f.label :select_address, "ご自身の住所" %></br>
@@ -53,7 +53,8 @@
           </table>
         </div>
       </div>
-      <div style="text-align:center;">
+      </div>
+      <div class="col-11" style="text-align:center;">
         <%= f.submit "確認画面へ進む", class: 'btn btn-primary' %>
       </div>
     <% end %>

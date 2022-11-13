@@ -1,12 +1,12 @@
 <div class="container">
-<div class="text-center">
+<div class="text-center" style="margin:20px;">
     <%= image_tag 'public_top', width: 'auto', height: '200px' %>
 </div>
 
-<h2><strong>新着商品</strong></h2>
+<h2><strong style="margin:20px;">新着商品</strong></h2>
 <div class="row">
   <% @items.each do |item| %>
-  <div class="col-3">
+  <div class="col-3" style="margin:10px;">
     <%= link_to item_path(item.id) do %>
       <%= image_tag item.image, width: 'auto', height: '150px' %></br>
     <% end %>
