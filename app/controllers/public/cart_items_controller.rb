@@ -11,6 +11,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
+    @total = 0
     @cart_item = current_customer.cart_items.new(cart_item_params)
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])

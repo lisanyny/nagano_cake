@@ -17,7 +17,7 @@
         <div class="row">
        <a class="navbar-brand p-3" href="/"><%= image_tag 'LOGO', width: 'auto', height: '50px' %></a>
         <ul class="navbar-nav ml-auto">
-           <% if request.fullpath.include? "/admin" %>
+           <% if current_admin %>
            <li class="nav-item" style="margin:10px;">
             <%= link_to admin_items_path, class: 'btn btn-outline-dark' do %>
               商品一覧

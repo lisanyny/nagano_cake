@@ -25,11 +25,6 @@
         <td><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
-        <th>注文ステータス</th>
-        <%= form_with model: @order, url: admin_order_path do |f| %>
-        <td><%= @order.status_i18n %></td>
-        <td><%= f.submit "更新", class: 'btn btn-success' %></td>
-        <% end %>
       </tr>
     </table>
     </div>
@@ -40,20 +35,14 @@
           <th>単価(税込)</th>
           <th>数量</th>
           <th>小計</th>
-          <th>製作ステータス</th>
-          <th></th>
         </thead>
         <tbody>
           <% @order.order_details.each do |order_detail| %>
           <tr>
-          <td><%= order_detail.item.name %></td>
-          <td><%= order_detail.price %></td>
-          <td><%= order_detail.amount %></td>
-          <td><%= order_detail.price*order_detail.amount %></td>
-          <%= form_with model: order_detail, url: admin_order_path do |f| %>
-          <td><%= order_detail.making_status_i18n %></td>
-          <td><%= f.submit "更新", class: 'btn btn-success' %></td>
-          <% end %>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.price*order_detail.amount %></td>
           </tr>
           <% end %>
         </tbody>

@@ -6,7 +6,7 @@
 <h2><strong style="margin:20px;">新着商品</strong></h2>
 <div class="row">
   <% @items.each do |item| %>
-  <div class="col-3" style="margin:10px;">
+  <div class="col-2" style="margin:10px;">
     <%= link_to item_path(item.id) do %>
       <%= image_tag item.image, width: 'auto', height: '150px' %></br>
     <% end %>

@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
+    return redirect_to cart_items_path if current_customer.cart_items.blank?
     @order = Order.new
   end
 
@@ -8,7 +9,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = current_customer.orders.find(params[:id])
   end
 
   def confirm

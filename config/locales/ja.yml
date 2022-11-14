@@ -23,7 +23,3 @@
         previous: <i class="fas fa-angle-left"></i>
         next: <i class="fas fa-angle-right"></i>
         truncate: "..."
- activerecord:
- errors:
-  messages:
-   record_invalid: "バリデーションに失敗しました: %{errors}"
