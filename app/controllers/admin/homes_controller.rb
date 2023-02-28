@@ -3,8 +3,7 @@ class Admin::HomesController < ApplicationController
     @orders = Order.page(params[:page])
   end
 
-def order_params
+  def order_params
     params.require(:order).permit(:last_name, :first_name, :order)
-  end
-
+    end
 end

@@ -26,16 +26,16 @@ class Public::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
 
-    else params[:order][:select_address] =="2"
-      @order.postal_code = params[:order][:postal_code]
-      @order.address = params[:order][:address]
-      @order.name = params[:order][:name]
+    else params[:order][:select_address] == "2"
+         @order.postal_code = params[:order][:postal_code]
+         @order.address = params[:order][:address]
+         @order.name = params[:order][:name]
     end
 
     @cart_items = current_customer.cart_items
     @total = 0
     @cart_items.each do |cart_item|
-     @total = @total+cart_item.subtotal
+      @total = @total + cart_item.subtotal
     end
     @order.price = @total
   end
@@ -53,7 +53,7 @@ class Public::OrdersController < ApplicationController
       @order_detail = OrderDetail.new
       @order_detail.item_id = cart_item.item_id
       @order_detail.amount = cart_item.amount
-      @order_detail.price = (cart_item.item.price*1.1).floor
+      @order_detail.price = (cart_item.item.price * 1.1).floor
       @order_detail.order_id = @order.id
       @order_detail.save
     end
@@ -62,9 +62,7 @@ class Public::OrdersController < ApplicationController
   end
 
   private
-
-  def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :price, :customer_id)
-  end
-
+    def order_params
+      params.require(:order).permit(:payment_method, :postal_code, :address, :name, :price, :customer_id)
+    end
 end

@@ -21,10 +21,10 @@ class Public::CartItemsController < ApplicationController
 
     elsif @cart_item.save
       @cart_items = current_customer.cart_items.all
-      render 'index'
+      render "index"
 
-		else
-		 render 'index'
+    else
+      render "index"
     end
   end
 
@@ -36,13 +36,11 @@ class Public::CartItemsController < ApplicationController
 
   def delete_all
     current_customer.cart_items.destroy_all
-    redirect_to cart_items_path, notice: 'カートが空になりました。'
+    redirect_to cart_items_path, notice: "カートが空になりました。"
   end
 
   private
-
-  def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount, :customer_id)
-  end
-
+    def cart_item_params
+      params.require(:cart_item).permit(:item_id, :amount, :customer_id)
+    end
 end
